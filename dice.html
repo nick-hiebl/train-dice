@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <style>
+      .dice {
+        display: inline-block;
+        width: 250px;
+        height: 250px;
+        border: 1px solid black;
+        background-color: lightblue;
+      }
+
+      button {
+        width: 200px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="1" class="dice"></div>
+    <div id="2" class="dice"></div>
+    <div id="3" class="dice"></div>
+    <div id="4" class="dice"></div>
+    <br/>
+    <button onclick="rollDice()">Click here</button>
+    <script>
+      const basicImages = ["1", "2", "3", "4", "5", "6"]
+
+      const basicDice = ["1", "2", "3"]
+
+      const specialImages = ["7", "8", "9"]
+
+      function setImage(diceId, imageId) {
+        document.getElementById(diceId).style = `background-image: url('./${imageId}.png')`
+      }
+
+      function rollDice() {
+        for (diceId of basicDice) {
+          const image = basicImages[Math.floor(Math.random() * basicImages.length)]
+          setImage(diceId, image)
+        }
+
+        setImage("4", specialImages[Math.floor(Math.random() * specialImages.length)])
+      }
+
+      rollDice()
+    </script>
+  </body>
+</html>
